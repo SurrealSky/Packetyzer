@@ -26,6 +26,12 @@
 
 #include "../Packetyzer.h"
 
+#ifdef _DEBUG
+#pragma comment(lib,"..//Debug//Packetyzer.lib")
+#else
+#pragma comment(lib,"..//Release//Packetyzer.lib")
+#endif
+
 using namespace Packetyzer::Analyzers;
 using namespace Packetyzer::Capture;
 using namespace Packetyzer::Send;
