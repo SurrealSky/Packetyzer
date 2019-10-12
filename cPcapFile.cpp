@@ -58,8 +58,13 @@ BOOL cPcapFile::ProcessPCAP(UINT Options)
 		fsize = fsize + PCAP_Packet_Header->incl_len;
 		PSize = PCAP_Packet_Header->incl_len;
 		
-		Packet = new cPacket((UCHAR*)PBaseAddress,PSize, PCAP_Packet_Header->ts_sec + PCAP_Packet_Header->ts_usec/1000000, 
+		//20191012......................Sureal update.......................//
+		/*Packet = new cPacket((UCHAR*)PBaseAddress,PSize, PCAP_Packet_Header->ts_sec + PCAP_Packet_Header->ts_usec/1000000, 
+			PCAP_General_Header->network, (Options & CPCAP_OPTIONS_MALFORM_CHECK) ? CPACKET_OPTIONS_MALFORM_CHECK : CPACKET_OPTIONS_NONE);*/
+		Packet = new cPacket((UCHAR*)PBaseAddress, PSize, ((time_t)PCAP_Packet_Header->ts_sec)* 1000000 + PCAP_Packet_Header->ts_usec,
 			PCAP_General_Header->network, (Options & CPCAP_OPTIONS_MALFORM_CHECK) ? CPACKET_OPTIONS_MALFORM_CHECK : CPACKET_OPTIONS_NONE);
+		//20191012......................Sureal update.......................//
+
 
 		Traffic->AddPacket(Packet, Packet->Timestamp);
 	}

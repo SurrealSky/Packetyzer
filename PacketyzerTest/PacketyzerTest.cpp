@@ -204,7 +204,7 @@ INT main(INT argc, CHAR* argv[])
 
 
 	ULONGLONG begin = GetTickCount64(); 
-	cPcapFile* TestFile = new cPcapFile("H:\\Github\\Packetyzer\\Debug\\example.pcap");
+	cPcapFile* TestFile = new cPcapFile("C:\\Users\\Administrator\\Desktop\\1.pcap");
 	printf(	"\n [*] Packets in pcap file:  (%s)\n" " -------------------------\n", 
 			TestFile->FileLoaded? TestFile->Filename:"FILE NOT LOADED");
 
